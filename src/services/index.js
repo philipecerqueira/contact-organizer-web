@@ -6,14 +6,7 @@ const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 10000,
-});
-
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
+  withCredentials: true,
 });
 
 api.interceptors.response.use(
@@ -65,8 +58,9 @@ export const logout = async () => {
   return api.get(`${API_BASE_URL}/auth/logout`);
 };
 
-export const getAllContacts = async () => {
-  return api.get(`${API_BASE_URL}/contact`);
+export const getAllContacts = async (pageToken = null) => {
+  const params = pageToken ? { pageToken } : {};
+  return api.get(`${API_BASE_URL}/contact`, { params });
 };
 
 export default api;

@@ -24,11 +24,14 @@ export default {
   }),
   methods: {
     toggleLogin() {
-      if (!this.isLoggedIn) {
-        this.$router.push("/");
-      } else {
+      if (this.isLoggedIn) {
         logout();
         localStorage.removeItem("isAuthenticated");
+        this.isLoggedIn = false;
+        return;
+      }
+
+      if (this.$route.path !== "/") {
         this.$router.push("/");
       }
     },
