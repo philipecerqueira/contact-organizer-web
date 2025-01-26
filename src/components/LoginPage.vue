@@ -1,8 +1,8 @@
 <template>
   <v-container fluid fill-height>
-    <v-row justify="center" align="center" class="mt-12">
-      <v-col cols="12" sm="8" md="4">
-        <v-card class="elevation-12" outlined>
+    <v-row justify="center" align="center">
+      <v-col cols="12" sm="3">
+        <v-card class="elevation-6">
           <v-card-title class="justify-center text-h6"
             >Conecte-se conosco</v-card-title
           >
@@ -11,7 +11,7 @@
               block
               color="primary"
               @click="loginWithGoogle"
-              class="mb-4"
+              class="mb-4 elevation-6"
               rounded
             >
               <v-icon class="ma-2">mdi-google</v-icon> Login com Google
@@ -37,7 +37,6 @@ export default {
         "message",
         (event) => {
           const data = event.data;
-          console.log("Event data: ", data);
 
           if (data?.status === "success") {
             popup.close();

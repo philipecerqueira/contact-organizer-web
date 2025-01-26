@@ -2,21 +2,16 @@
   <v-container fluid>
     <v-row justify="center">
       <v-col cols="12" sm="10" md="8">
-        <v-card class="elevation-2">
+        <v-card outlined>
           <v-card-title>
-            <span class="text-h6">Contatos</span>
+            <span class="text-h6 mr-2">Contatos </span>
+            <span class="text-subtitle-2"> ({{ totalPeople }})</span>
           </v-card-title>
-          <v-card-subtitle>
-            <span class="text-caption red--text">
-              ({{ totalPeople }} Registros)
-            </span>
-          </v-card-subtitle>
-
           <v-simple-table fixed-header>
             <thead>
               <tr>
                 <th class="text-left">Nome</th>
-                <th class="text-left">Email</th>
+                <th class="text-left">E-mail</th>
                 <th class="caption text-left">Telefone</th>
               </tr>
             </thead>
@@ -53,7 +48,7 @@ export default {
   data: () => ({
     contacts: [],
     nextPageToken: null,
-    totalPeople: null,
+    totalPeople: 0,
   }),
   methods: {
     async fetchContacts(pageToken = null) {

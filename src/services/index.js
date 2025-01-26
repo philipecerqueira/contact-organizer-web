@@ -63,4 +63,8 @@ export const getAllContacts = async (pageToken = null) => {
   return api.get(`${API_BASE_URL}/contact`, { params });
 };
 
+export const getContactsByDomain = async () => {
+  return api.get(`${API_BASE_URL}/contact/by-domain`);
+};
+
 export default api;
